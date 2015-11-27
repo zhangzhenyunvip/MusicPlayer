@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		04BD7A7C1C086F9F00449ABB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD7A7B1C086F9F00449ABB /* main.m */; };
 		04BD7A7F1C086F9F00449ABB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD7A7E1C086F9F00449ABB /* AppDelegate.m */; };
-		04BD7A821C086F9F00449ABB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD7A811C086F9F00449ABB /* ViewController.m */; };
 		04BD7A851C086F9F00449ABB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BD7A831C086F9F00449ABB /* Main.storyboard */; };
 		04BD7A881C086F9F00449ABB /* Music.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04BD7A861C086F9F00449ABB /* Music.xcdatamodeld */; };
 		04BD7A8A1C086F9F00449ABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BD7A891C086F9F00449ABB /* Assets.xcassets */; };
@@ -21,8 +20,6 @@
 		04BD7A7B1C086F9F00449ABB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04BD7A7D1C086F9F00449ABB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04BD7A7E1C086F9F00449ABB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		04BD7A801C086F9F00449ABB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		04BD7A811C086F9F00449ABB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		04BD7A841C086F9F00449ABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04BD7A871C086F9F00449ABB /* Music.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Music.xcdatamodel; sourceTree = "<group>"; };
 		04BD7A891C086F9F00449ABB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,8 +59,6 @@
 			children = (
 				04BD7A7D1C086F9F00449ABB /* AppDelegate.h */,
 				04BD7A7E1C086F9F00449ABB /* AppDelegate.m */,
-				04BD7A801C086F9F00449ABB /* ViewController.h */,
-				04BD7A811C086F9F00449ABB /* ViewController.m */,
 				04BD7A831C086F9F00449ABB /* Main.storyboard */,
 				04BD7A891C086F9F00449ABB /* Assets.xcassets */,
 				04BD7A8B1C086F9F00449ABB /* LaunchScreen.storyboard */,
@@ -108,8 +103,9 @@
 		04BD7A6F1C086F9F00449ABB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ZZY;
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = hm;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					04BD7A761C086F9F00449ABB = {
 						CreatedOnToolsVersion = 7.0;
@@ -152,7 +148,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04BD7A821C086F9F00449ABB /* ViewController.m in Sources */,
 				04BD7A7F1C086F9F00449ABB /* AppDelegate.m in Sources */,
 				04BD7A7C1C086F9F00449ABB /* main.m in Sources */,
 				04BD7A881C086F9F00449ABB /* Music.xcdatamodeld in Sources */,
@@ -265,7 +260,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				INFOPLIST_FILE = Music/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.itcast.Music;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -276,7 +273,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				INFOPLIST_FILE = Music/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.itcast.Music;
 				PRODUCT_NAME = "$(TARGET_NAME)";
