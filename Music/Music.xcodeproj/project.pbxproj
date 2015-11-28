@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047FB3011C09C5B900B5C847 /* ZZYAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 047FB3001C09C5B900B5C847 /* ZZYAudioTool.m */; settings = {ASSET_TAGS = (); }; };
 		04BD7A851C086F9F00449ABB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BD7A831C086F9F00449ABB /* Main.storyboard */; };
 		04BD7A881C086F9F00449ABB /* Music.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04BD7A861C086F9F00449ABB /* Music.xcdatamodeld */; };
 		04BD7A8A1C086F9F00449ABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BD7A891C086F9F00449ABB /* Assets.xcassets */; };
@@ -73,6 +74,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		047FB2FF1C09C5B900B5C847 /* ZZYAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZYAudioTool.h; sourceTree = "<group>"; };
+		047FB3001C09C5B900B5C847 /* ZZYAudioTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZYAudioTool.m; sourceTree = "<group>"; };
 		04BD7A771C086F9F00449ABB /* Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Music.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BD7A841C086F9F00449ABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04BD7A871C086F9F00449ABB /* Music.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Music.xcdatamodel; sourceTree = "<group>"; };
@@ -275,6 +278,8 @@
 			children = (
 				04DE38721C08409A0080AA05 /* ZZYMusicTool.h */,
 				04DE38731C08409A0080AA05 /* ZZYMusicTool.m */,
+				047FB2FF1C09C5B900B5C847 /* ZZYAudioTool.h */,
+				047FB3001C09C5B900B5C847 /* ZZYAudioTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -503,6 +508,7 @@
 				04DE38741C08409A0080AA05 /* ZZYMusicTool.m in Sources */,
 				04BD7B821C087C0400449ABB /* NSObject+MJKeyValue.m in Sources */,
 				04BD7B7E1C087C0400449ABB /* MJMethod.m in Sources */,
+				047FB3011C09C5B900B5C847 /* ZZYAudioTool.m in Sources */,
 				04BD7B7C1C087C0400449ABB /* MJIvar.m in Sources */,
 				04DE386C1C08260D0080AA05 /* ZZYPlayingController.m in Sources */,
 				04BD7B0D1C08796000449ABB /* ZZYMusicController.m in Sources */,

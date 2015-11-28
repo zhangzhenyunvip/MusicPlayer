@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *singerIcon;
 
 
+/// 正在播放的音乐
+@property (nonatomic, strong) ZZYMusic *playingMusic;
 @end
 
 @implementation ZZYPlayingController
@@ -25,6 +27,10 @@
     
 }
 - (void)show {
+    // 0.判断播放音乐是否发生改变
+    if (self.playingMusic && self.playingMusic != [ZZYMusicTool playingMusic]) {
+        [self stopPlayingMusic];
+    }
     
     // 1.获取weindow
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -36,19 +42,17 @@
 
     // 添加动画
     self.view.y = self.view.height;
+    
     [UIView animateWithDuration:1.0 animations:^{
         self.view.y = 0;
     }completion:^(BOOL finished) {
         
         window.userInteractionEnabled = YES;
-        
         // 开始播放音乐
         [self startPlayingMusic];
-        
-        
     }];
-    
 }
+
 // 退出控制器
 - (IBAction)exit {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -69,9 +73,13 @@
     // 1. 拿到正在播放的音乐数据
     ZZYMusic *music = [ZZYMusicTool playingMusic];
     // 设置界面详细数据
-    self.singerIcon.image = [UIImage imageNamed:music.icon];
-    self.singerLabel.text = music.singer;
-    self.songLabel.text = music.name;
+    if (music != self.playingMusic) {
+        self.playingMusic = music;
+        
+        self.singerIcon.image = [UIImage imageNamed:music.icon];
+        self.singerLabel.text = music.singer;
+        self.songLabel.text = music.name;
+    }
     
 }
 
