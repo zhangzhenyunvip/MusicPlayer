@@ -10,6 +10,7 @@
                 <outlet property="singerIcon" destination="Gby-AR-337" id="EZM-mP-PC9"/>
                 <outlet property="singerLabel" destination="90n-ch-mtt" id="LcI-nH-N2h"/>
                 <outlet property="songLabel" destination="Wm8-Es-rOc" id="cWO-zk-oe8"/>
+                <outlet property="totalTimeLabel" destination="uDS-Ro-5Kt" id="U1b-KE-Ua5"/>
                 <outlet property="view" destination="kyX-19-BxN" id="r5Z-1T-izI"/>
             </connections>
         </placeholder>

@@ -5,15 +5,19 @@
 //  Created by mac on 15/11/27.
 //
 //
+#import <AVFoundation/AVFoundation.h>
 
 #import "ZZYPlayingController.h"
 #import "UIView+AdjustFrame.h"
 #import "ZZYMusicTool.h"
+#import "ZZYAudioTool.h"
+
 
 @interface ZZYPlayingController ()
 @property (weak, nonatomic) IBOutlet UILabel *songLabel;
 @property (weak, nonatomic) IBOutlet UILabel *singerLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *singerIcon;
+@property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 
 
 /// 正在播放的音乐
@@ -79,6 +83,12 @@
         self.singerIcon.image = [UIImage imageNamed:music.icon];
         self.singerLabel.text = music.singer;
         self.songLabel.text = music.name;
+        
+        // 播放音乐
+        AVAudioPlayer *player = [ZZYAudioTool playMusicWithName:music.filename];
+        
+        // 显示总时间的label
+        self.totalTimeLabel.text = [self stringWithTime:player.duration];
     }
     
 }
@@ -89,9 +99,19 @@
     self.singerIcon.image = [UIImage imageNamed:@"play_cover_pic_bg"];
     self.singerLabel.text = nil;
     self.songLabel.text = nil;
+    
+    // 停止播放音乐
+    [ZZYAudioTool stopMusicWithName:self.playingMusic.filename];
 }
 
-
+#pragma mark - 处理时间的label
+- (NSString *)stringWithTime:(NSTimeInterval )time {
+    
+    NSInteger minute = time / 60;
+    NSInteger second =(NSInteger) time % 60;
+    
+    return [NSString stringWithFormat:@"%02ld:%02ld",minute,second];
+}
 
 
 @end

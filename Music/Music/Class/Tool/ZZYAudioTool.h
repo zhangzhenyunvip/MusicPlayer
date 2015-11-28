@@ -7,19 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ZZYAudioTool : NSObject
 
 /// 播放音乐
-
-+ (void)playMusicWithName:(NSString *)name;
++ (AVAudioPlayer *)playMusicWithName:(NSString *)name;
 
 /// 暂停音乐
-
 + (void)pauseMusicWithName:(NSString *)name;
 
 /// 停止播放音乐
-
 + (void)stopMusicWithName:(NSString *)name;
 
 
