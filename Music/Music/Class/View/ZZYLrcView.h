@@ -10,4 +10,6 @@
 
 @interface ZZYLrcView : DRNRealTimeBlurView
 
+@property (nonatomic, copy) NSString *lrcName;
+
 @end
