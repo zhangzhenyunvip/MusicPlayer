@@ -13,7 +13,7 @@
 #import "ZZYAudioTool.h"
 
 
-@interface ZZYPlayingController ()
+@interface ZZYPlayingController () <AVAudioPlayerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *songLabel;
 @property (weak, nonatomic) IBOutlet UILabel *singerLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *singerIcon;
@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *playOrPauseButton;
+@property (weak, nonatomic) IBOutlet UIView *lrcView;
+@property (weak, nonatomic) IBOutlet UIButton *lrcButton;
 
 
 /// 进度条定时器
@@ -45,6 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.player.delegate = self;
 }
 - (void)show {
     // 0.判断播放音乐是否发生改变
@@ -89,6 +92,13 @@
     
 }
 
+/// 显示歌词的view
+- (IBAction)showLrcView:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    self.lrcView.hidden = !self.lrcView.hidden;
+}
+
+
 #pragma mark - 音乐播放操作
 /// 开始播放音乐
 - (void) startPlayingMusic {
@@ -109,6 +119,7 @@
         // 播放音乐
         AVAudioPlayer *player = [ZZYAudioTool playMusicWithName:music.filename];
         self.player = player;
+        self.player.delegate = self;
         // 显示总时间的label
         self.totalTimeLabel.text = [self stringWithTime:player.duration];
         
@@ -176,9 +187,9 @@
     if (point.x <= self.sliderButton.width * 0.5) {
         self.sliderLeftConstraint.constant = 0;
     } else if (point.x >= self.view.width - self.sliderButton.width * 0.5) {
-        self.sliderLeftConstraint.constant =  self.view.width - self.sliderButton.width * 0.5;
+        self.sliderLeftConstraint.constant =  self.view.width - self.sliderButton.width - 1;
     } else {
-        self.sliderLeftConstraint.constant = point.x - self.sliderButton.width * 0.5 - 1;
+        self.sliderLeftConstraint.constant = point.x - self.sliderButton.width * 0.5;
     }
     
     // 改变当前播放的时间
@@ -201,7 +212,7 @@
     // 更新sliderButton的位置
     if (self.sliderLeftConstraint.constant + point.x <= 0) {
         self.sliderLeftConstraint.constant = 0;
-    } else if (self.sliderLeftConstraint.constant + point.x >= self.view.width - self.sliderButton.width) {
+    } else if (self.sliderLeftConstraint.constant + point.x >= self.view.width - self.sliderButton.width * 0.5) {
         self.sliderLeftConstraint.constant = self.view.width - self.sliderButton.width ;
     } else {
         self.sliderLeftConstraint.constant += point.x;
@@ -277,6 +288,24 @@
     [self startPlayingMusic];
     
     
+}
+
+#pragma mark - player的代理方法
+
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    if (flag) {
+        [self nextButtonClick];
+    }
+}
+
+/// 音乐被打断是开始调用
+-(void)audioPlayerBeginInterruption:(AVAudioPlayer *)player {
+    [self plaOrPausueButtonClick];
+}
+
+/// 音乐结束被打断是开始调用
+-(void)audioPlayerEndInterruption:(AVAudioPlayer *)player {
+    [self plaOrPausueButtonClick];
 }
 
 
