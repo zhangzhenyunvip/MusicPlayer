@@ -28,6 +28,8 @@
 /// 显示时间label
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *playOrPauseButton;
+
 
 /// 进度条定时器
 @property (nonatomic, strong) NSTimer *progressTimer;
@@ -113,6 +115,9 @@
         // 添加定时器
         [self addProgressTimer];
         [self updateInfo];
+    
+        // 改变按钮的状态
+    self.playOrPauseButton.selected = NO;
     
 }
 
@@ -235,6 +240,44 @@
     return [NSString stringWithFormat:@"%02ld:%02ld",minute,second];
 }
 
+
+#pragma mark - 对按钮的操作
+
+/// 播放活或暂停按钮
+- (IBAction)plaOrPausueButtonClick {
+    
+    // 更换按钮图片
+    self.playOrPauseButton.selected = !self.playOrPauseButton.selected;
+    
+    // 切换操作状态
+    if (self.player.playing) {
+        [self.player pause];
+        [self removeProgressTimer];
+    } else {
+        [self.player play];
+        [self addProgressTimer];
+    }
+    
+}
+
+/// 上一首按钮的点击
+- (IBAction)previousButtonClick {
+    // 停止播放当前音乐
+    [self stopPlayingMusic];
+    // 切换到上一首
+    [ZZYMusicTool previousMusic];
+    // 开始播放音乐
+    [self startPlayingMusic];
+}
+
+/// 下一首按钮的点击
+- (IBAction)nextButtonClick {
+    [self stopPlayingMusic];
+    [ZZYMusicTool next];
+    [self startPlayingMusic];
+    
+    
+}
 
 
 

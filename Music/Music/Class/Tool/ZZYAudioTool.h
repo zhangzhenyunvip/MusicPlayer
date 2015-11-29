@@ -20,5 +20,10 @@
 /// 停止播放音乐
 + (void)stopMusicWithName:(NSString *)name;
 
+/// 上一首音乐
+
+
+/// 下一首音乐
+
 
 @end
