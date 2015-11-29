@@ -25,7 +25,8 @@
 - (IBAction)tapProgressBackground:(UITapGestureRecognizer *)sender;
 
 - (IBAction)panslider:(UIPanGestureRecognizer *)sender;
-
+/// 显示时间label
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 
 /// 进度条定时器
@@ -137,7 +138,7 @@
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateInfo) userInfo:nil repeats:YES];
     self.progressTimer = timer;
     // 添加到运行循环中
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop mainRunLoop] addTimer:self.progressTimer forMode:NSRunLoopCommonModes];
     
 }
 
@@ -204,12 +205,23 @@
     // 改变当前播放的时间
     CGFloat progressRation = self.sliderLeftConstraint.constant / (self.view.width - self.sliderButton.width);
     CGFloat curretnTime = progressRation * self.player.duration;
-    self.player.currentTime = curretnTime;
-    // 更新文字
-    [self updateInfo];
-#warning TODO -->
-    // 监听拖拽手势状态 n
     
+    
+    // 更新文字
+    NSString *curretTimeStr = [self stringWithTime:curretnTime];
+    
+    [self.sliderButton setTitle:curretTimeStr forState:(UIControlStateNormal)];
+    self.timeLabel.text = curretTimeStr;
+    
+    // 监听拖拽手势状态
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        [self removeProgressTimer];
+        self.timeLabel.hidden = NO;
+    } else if (sender.state == UIGestureRecognizerStateEnded) {
+        self.player.currentTime = curretnTime;
+        [self addProgressTimer];
+        self.timeLabel.hidden = YES;
+    }
     
 }
 

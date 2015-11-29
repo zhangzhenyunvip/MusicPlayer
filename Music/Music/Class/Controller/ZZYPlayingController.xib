@@ -12,6 +12,7 @@
                 <outlet property="sliderButton" destination="ujq-TZ-Who" id="knF-AJ-hFD"/>
                 <outlet property="sliderLeftConstraint" destination="NC0-tp-PhC" id="Gv7-Rh-LCp"/>
                 <outlet property="songLabel" destination="hcD-rw-rJj" id="QJu-8g-cgi"/>
+                <outlet property="timeLabel" destination="JEZ-XW-LIi" id="cIi-Ib-nFt"/>
                 <outlet property="totalTimeLabel" destination="SOr-Ok-H10" id="U16-at-XVC"/>
                 <outlet property="view" destination="EvL-d3-pt6" id="ker-Ep-162"/>
             </connections>
